@@ -1,15 +1,13 @@
 /**
  * SheepIt Jquery Plugin
- * http://www.mdelrosso.com/sheepit/
- *
- * SheepIt is donationware. If you are using it, please donate.
- * #URL_TO_DONATIONS#
+ * https://github.com/Themekraft/SheepIt
  *
  * @version
- * 1.0.0 (December 19 2010)
+ * 1.0.1 (April 17th 2012)
  * 
  * @copyright
  * Copyright (C) 2010 Mariano Del Rosso (http://www.mdelrosso.com)
+ * Further Developement by themekraft.com
  *
  * @license
  * 
