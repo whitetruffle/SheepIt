@@ -4,21 +4,21 @@
  *
  * @version
  * 1.0.1 (April 17th 2012)
- * 
+ *
  * @copyright
  * Copyright (C) 2010 Mariano Del Rosso (http://www.mdelrosso.com)
  * Further Developement by themekraft.com
  *
  * @license
- * 
+ *
  * SyntaxHighlighter is free software: you can redistribute it and/or modify
  * it under the terms of the MIT license
- * 
+ *
  * SheepIt is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * MIT license for more details.
- * 
+ *
  * You should have received a copy of the MIT License
  * along with SheepIt.  If not, see <http://en.wikipedia.org/wiki/MIT_License>.
  */
@@ -51,8 +51,8 @@ jQuery.fn.sheepIt = function (options){
             };
 
             return clone;
-                
-            
+
+
         }
 
         /**
@@ -130,23 +130,23 @@ jQuery.fn.sheepIt = function (options){
         function normalizeFieldsForForm(form, index)
         {
             form.find(formFields).each(function(){
-            	if( $(this).attr("name") != undefined ){
-	                var that = $(this)
-	                    ,idAttr = that.attr("id")
-	                    ,nameAttr = that.attr("name")
-	
-	                /* Normalize field name attributes */
-	               
-	                newNameAttr = nameAttr.replace(options.indexFormat, index);
-	                that.attr("name", newNameAttr);
-	
-	                /* Normalize field id attributes */
-	                newIdAttr = idAttr.replace(options.indexFormat, index);
-	
-	                form.find("label[for='"+idAttr+"']").each(function(){
-	                        $(this).attr("for", newIdAttr);
-	                    });
-	                that.attr("id", newIdAttr);
+              if( $(this).attr("name") != undefined ){
+                  var that = $(this)
+                      ,idAttr = that.attr("id")
+                      ,nameAttr = that.attr("name")
+
+                  /* Normalize field name attributes */
+
+                  newNameAttr = nameAttr.replace(options.indexFormat, index);
+                  that.attr("name", newNameAttr);
+
+                  /* Normalize field id attributes */
+                  newIdAttr = idAttr.replace(options.indexFormat, index);
+
+                  form.find("label[for='"+idAttr+"']").each(function(){
+                          $(this).attr("for", newIdAttr);
+                      });
+                  that.attr("id", newIdAttr);
                }
             });
         }
@@ -292,9 +292,9 @@ jQuery.fn.sheepIt = function (options){
             // Before add callBack function
             if (typeof options.beforeAdd === "function")
                 options.beforeAdd(source);
-                
+
             var newForm = false;
-            
+
             // Pre-generated form
             if (form) {
                 if ( typeof(form) == 'string' ) {
@@ -305,9 +305,9 @@ jQuery.fn.sheepIt = function (options){
                 } else {
                     return false;
                 }
-                
+
                 newForm.remove();
-               
+
             }
             // Cloned Form
             else {
@@ -316,7 +316,7 @@ jQuery.fn.sheepIt = function (options){
             }
 
             if (canAddForm() && newForm) {
-                
+
                 // New form initialization
                 newForm = normalizeForm(newForm);
 
@@ -325,8 +325,8 @@ jQuery.fn.sheepIt = function (options){
 
                 removeCurrentBtn.click(clickOnRemoveCurrent);
                 removeCurrentBtn.data('removableClone', newForm);
-                
-                
+
+
                 // Index
                 newForm.data('formIndex', getIndex());
                 // Linked references (separators and forms)
@@ -361,7 +361,7 @@ jQuery.fn.sheepIt = function (options){
 
                     var x = 0;
                     var nestedForms = [];
-                    
+
                     for(x in options.nestedForms) {
 
                         if (typeof(options.nestedForms[x].id) != 'undefined' && typeof(options.nestedForms[x].options) != 'undefined') {
@@ -369,7 +369,7 @@ jQuery.fn.sheepIt = function (options){
                             options.nestedForms[x].parentForm = source;
                             var id = options.nestedForms[x].id.replace(options.indexFormat,newForm.data('formIndex'));
                             var nestedForm = $('#' + id).sheepIt(options.nestedForms[x].options);
-                            
+
                             nestedForms.push(nestedForm);
                         }
                     }
@@ -377,7 +377,7 @@ jQuery.fn.sheepIt = function (options){
                 }
 
                 extendForm(newForm);
-                
+
                 forms.push(newForm);
 
                 if (normalize) normalizeAll();
@@ -387,7 +387,7 @@ jQuery.fn.sheepIt = function (options){
                     options.afterAdd(source, newForm);
 
                 return true;
-                
+
             } else {
                 return false;
             }
@@ -522,11 +522,11 @@ jQuery.fn.sheepIt = function (options){
         function next()
         {
             if (ip !== false) {
-                
+
                 if (forms.length > 1) {
                     var i = 0;
                     var init = parseFloat(ip+1);
-                    
+
                     for (i=init; i<forms.length; i++) {
                         if (forms[i]) {
                             ip = i;
@@ -606,7 +606,7 @@ jQuery.fn.sheepIt = function (options){
                 } else {
                     var i = 0;
                     for (i=(forms.length-1); i>=0 ; i--) {
-                        
+
                         if (forms[i]) {
                             ip = i;
                             return true;
@@ -677,7 +677,7 @@ jQuery.fn.sheepIt = function (options){
         {
             var x = 0;
             var position = 0;
-            
+
             for (x=0; x<=index; x++) {
                 if (forms[x]) {
                     position++;
@@ -685,7 +685,7 @@ jQuery.fn.sheepIt = function (options){
             }
             return position;
         }
-        
+
         /**
          * Get the current index (Forms array length)
          */
@@ -760,7 +760,7 @@ jQuery.fn.sheepIt = function (options){
                 return false;
             }
         }
-        
+
         /**
          * Get a form by its position
          */
@@ -787,7 +787,7 @@ jQuery.fn.sheepIt = function (options){
         {
             if (hasForms()) {
                first();
-               
+
                var x = 0;
                var activeForms = [];
                for (x=0; x<getFormsCount(); x++) {
@@ -853,13 +853,13 @@ jQuery.fn.sheepIt = function (options){
 
                 form = getForm(index);
                 fillForm(form, values);
-            } 
+            }
             // Form Id
             else if(typeof(index) == 'string') {
                 form = $('#'+index);
                 fillForm(form, values);
             }
-                
+
         }
 
         function fillForm(form, data)
@@ -868,7 +868,7 @@ jQuery.fn.sheepIt = function (options){
 
             // For each element, try to get the correct field or fields
             $.each(data, function(index, value){
-                
+
                 var formId = source.attr('id');
                 var formIndex = form.data('formIndex');
 
@@ -879,13 +879,13 @@ jQuery.fn.sheepIt = function (options){
                 } else {
                     index = formId + '_' + formIndex + '_' + index;
                 }
-                
-               
+
+
 
                 /**
                  * Search for field (by id, by name, etc)
                  */
-                
+
                 // Search by id
                 var field = form.find(':input[id="' + index + '"]');
 
@@ -898,12 +898,12 @@ jQuery.fn.sheepIt = function (options){
                     if (field.length == 0) {
                         // Search by name array format
                         field = form.find(':input[name="' + index + '[]"]');
-                    } 
+                    }
                 }
 
                 // Field was found
                 if (field.length > 0) {
-					
+
                     // Multiple values?
                     var mv = false;
                     if (typeof(value) == 'object') mv = true;
@@ -915,7 +915,7 @@ jQuery.fn.sheepIt = function (options){
                     if (mf) {
 
                         if (mv) {
-							
+
                             var fieldsToFill = [];
                             fieldsToFill['fields'] = [];
                             fieldsToFill['values'] = [];
@@ -948,17 +948,17 @@ jQuery.fn.sheepIt = function (options){
                     if ( form.data( 'nestedForms' ) != undefined && form.data('nestedForms').length > 0) {
                         x = 0;
                         for (x in form.data('nestedForms')) {
-                            
+
                             if (index == form.data('nestedForms')[x].attr('id') && typeof(value) == 'object') {
                                 form.data('nestedForms')[x].inject(value);
                             }
                         }
-                        
+
                     }
                 }
-                
+
             });
-            
+
 
         }
 
@@ -1012,7 +1012,7 @@ jQuery.fn.sheepIt = function (options){
             }
         }
 
-        function setOptions(newOptions) 
+        function setOptions(newOptions)
         {
             options = [];
             options = $.extend(defaults, newOptions);
@@ -1063,7 +1063,7 @@ jQuery.fn.sheepIt = function (options){
              */
             templateForm = $(options.formTemplateSelector);
             noFormsTemplate = $(options.noFormsTemplateSelector);
-            
+
             // Get the template for clonning
             template = templateForm.cloneWithAttribut(true);
             templateForm.remove();
@@ -1174,7 +1174,7 @@ jQuery.fn.sheepIt = function (options){
                             return false;
                         }
                     },
-                   
+
                     /* ----- Forms ----- */
                     // Get all Forms
                     getForms: function() {
@@ -1187,7 +1187,7 @@ jQuery.fn.sheepIt = function (options){
                     getForm: function(val) {
                         if (typeof(val) != 'undefined') {
                             val++;
-                        } 
+                        }
                         return getForm(val);
                     },
                     getLastForm: function() {
@@ -1242,7 +1242,7 @@ jQuery.fn.sheepIt = function (options){
                         // Loop over each data using a Proxy (function , context)
                         $.each(data, $.proxy( fillData, source ));
                     }
-                    
+
             });
 
         }
@@ -1251,7 +1251,7 @@ jQuery.fn.sheepIt = function (options){
          * Extends cloned forms with many useful methods,
          * used to control each form with javascript
          */
-        function extendForm(form) 
+        function extendForm(form)
         {
             // API
             $.extend( form, {
@@ -1310,7 +1310,7 @@ jQuery.fn.sheepIt = function (options){
          * Gets the first element of the collection and decorates with jquery
          */
         var source = $(this).first();
-        
+
         // Extend source with useful methods
         extendSource(source);
 
@@ -1330,7 +1330,7 @@ jQuery.fn.sheepIt = function (options){
             ,ip =  false // Internal ip
             // Default options
             ,defaults = {
-                
+
                 // Controls selectors
                  addSelector: '#' + $(this).attr("id") + '_add'
                 ,addNSelector: '#' + $(this).attr("id") + '_add_n'
@@ -1394,7 +1394,7 @@ jQuery.fn.sheepIt = function (options){
 
 /**
  * jQuery original clone method decorated in order to fix an IE < 8 issue
- * where attributs especially name are not copied 
+ * where attributs especially name are not copied
  */
 jQuery.fn.cloneWithAttribut = function( withDataAndEvents ){
     if ( jQuery.support.noCloneEvent ){
