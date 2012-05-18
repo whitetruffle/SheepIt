@@ -70,7 +70,7 @@ jQuery.fn.sheepIt = function (options){
         function clickOnAddN(event)
         {
             event.preventDefault();
-            if (addNInput.value != '')
+            if (addNInput.value !== '')
                 addNForms(addNInput.attr('value'));
         }
 
@@ -79,13 +79,20 @@ jQuery.fn.sheepIt = function (options){
          */
         function clickOnRemoveCurrent(event)
         {
-            event.preventDefault();
+            event.preventDefault()
 
-            if (options.removeCurrentConfirmation) {
+            if (typeof options.removeCurrentConfirmation === 'function' ) {
+              var callback = function(data) {
+                return function () {
+                  removeCurrentForm(data)
+                }
+              }
+              options.removeCurrentConfirmationMsg(callback($(this).data('removableClone')))
+            } else if (options.removeCurrentConfirmation) {
                 if ( confirm(options.removeCurrentConfirmationMsg) )
-                    removeCurrentForm($(this).data('removableClone'));
+                    removeCurrentForm($(this).data('removableClone'))
             } else {
-                removeCurrentForm($(this).data('removableClone'));
+                removeCurrentForm($(this).data('removableClone'))
             }
         }
 
@@ -96,15 +103,15 @@ jQuery.fn.sheepIt = function (options){
         {
             event.preventDefault();
 
-            if (options.removeLastConfirmation) {
+            if (typeof options.removeLastConfirmation === "function") {
+              options.removeLastConfirmation(removeLastForm)
+            } else if (options.removeLastConfirmation) {
                 if ( confirm(options.removeLastConfirmationMsg) ) {
-                    removeLastForm();
+                    removeLastForm()
                 }
             } else {
-                removeLastForm();
+                removeLastForm()
             }
-
-
         }
 
         /**
@@ -114,14 +121,14 @@ jQuery.fn.sheepIt = function (options){
         {
             event.preventDefault();
 
-            if (options.removeAllConfirmation) {
+            if (typeof options.removeAllConfirmation === "function" ) {
+              options.removeAllConfirmationMsg(removeAllForms)
+            } else if (options.removeAllConfirmation) {
                 if ( confirm(options.removeAllConfirmationMsg) )
-                    removeAllForms();
+                    removeAllForms()
             } else {
-                removeAllForms();
+                removeAllForms()
             }
-
-
         }
 
         /**
