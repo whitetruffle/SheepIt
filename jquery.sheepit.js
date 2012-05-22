@@ -1107,6 +1107,9 @@ jQuery.fn.sheepIt = function (options){
 
             normalizeAll();
 
+            if (typeof options.afterInit === "function")
+                options.afterInit(source)
+
             source.show();
         }
 
@@ -1389,6 +1392,7 @@ jQuery.fn.sheepIt = function (options){
                 ,afterClone: function() {} // Callback function que se ejecuta justo despues de clonar un formulario
                 ,beforeAdd: function() {} // Callback function que se ejecuta justo antes de empezar el proceso de agregado de un formulario
                 ,afterAdd: function() {} // Callback function que se ejecuta justo despues de haber agregado un formulario
+                ,afterInit: function() {} // Callback function after sheepit has been initialized. Post data inject.
                 ,insertNewForms: 'after' // New forms will be insterted after []* or before *[] existing forms
             };
 
