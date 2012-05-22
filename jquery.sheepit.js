@@ -81,7 +81,7 @@ jQuery.fn.sheepIt = function (options){
         {
             event.preventDefault()
 
-            if (typeof options.removeCurrentConfirmation === 'function' ) {
+            if (typeof options.removeCurrentConfirmationMsg === 'function' ) {
               var callback = function(data) {
                 return function () {
                   removeCurrentForm(data)
@@ -103,9 +103,9 @@ jQuery.fn.sheepIt = function (options){
         {
             event.preventDefault();
 
-            if (typeof options.removeLastConfirmation === "function") {
+            if (typeof options.removeLastConfirmationMsg === "function") {
               options.removeLastConfirmation(removeLastForm)
-            } else if (options.removeLastConfirmation) {
+            } else if (options.removeLastConfirmationMsg) {
                 if ( confirm(options.removeLastConfirmationMsg) ) {
                     removeLastForm()
                 }
@@ -121,7 +121,7 @@ jQuery.fn.sheepIt = function (options){
         {
             event.preventDefault();
 
-            if (typeof options.removeAllConfirmation === "function" ) {
+            if (typeof options.removeAllConfirmationMsg === "function" ) {
               options.removeAllConfirmationMsg(removeAllForms)
             } else if (options.removeAllConfirmation) {
                 if ( confirm(options.removeAllConfirmationMsg) )
