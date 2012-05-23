@@ -87,7 +87,7 @@ jQuery.fn.sheepIt = function (options){
                   removeCurrentForm(data)
                 }
               }
-              options.removeCurrentConfirmationMsg(callback($(this).data('removableClone')))
+              options.removeCurrentConfirmationMsg($(this).data('removableClone'), callback($(this).data('removableClone')))
             } else if (options.removeCurrentConfirmation) {
                 if ( confirm(options.removeCurrentConfirmationMsg) )
                     removeCurrentForm($(this).data('removableClone'))
@@ -104,6 +104,7 @@ jQuery.fn.sheepIt = function (options){
             event.preventDefault();
 
             if (typeof options.removeLastConfirmationMsg === "function") {
+              // Not tested :(
               options.removeLastConfirmation(removeLastForm)
             } else if (options.removeLastConfirmationMsg) {
                 if ( confirm(options.removeLastConfirmationMsg) ) {
@@ -122,6 +123,7 @@ jQuery.fn.sheepIt = function (options){
             event.preventDefault();
 
             if (typeof options.removeAllConfirmationMsg === "function" ) {
+              // Not tested :(
               options.removeAllConfirmationMsg(removeAllForms)
             } else if (options.removeAllConfirmation) {
                 if ( confirm(options.removeAllConfirmationMsg) )
