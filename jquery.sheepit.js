@@ -1070,8 +1070,15 @@ jQuery.fn.sheepIt = function (options){
             /**
              * Templates
              */
-            templateForm = $(options.formTemplateSelector);
-            noFormsTemplate = $(options.noFormsTemplateSelector);
+            if (typeof options.formTemplateSelector === 'string')
+              templateForm = $(options.formTemplateSelector)
+            else
+              templateForm = options.formTemplateSelector
+
+            if (typeof options.noFormsTemplateSelector === 'string')
+              noFormsTemplate = $(options.noFormsTemplateSelector)
+            else
+              noFormsTemplate = options.noFormsTemplateSelector
 
             // Get the template for clonning
             template = templateForm.cloneWithAttribut(true);
